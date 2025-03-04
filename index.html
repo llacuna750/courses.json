@@ -17,7 +17,7 @@
     </div>
 
     <script>
-        fetch("https://llacuna750.github.io/courses.json/")
+        fetch("https://raw.githubusercontent.com/llacuna750/courses.json/refs/heads/main/courses.json")
             .then(response => response.json())
             .then(data => {
                 let coursesContainer = document.getElementById('courses');
