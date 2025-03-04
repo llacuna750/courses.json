@@ -1,0 +1,19 @@
+{
+    "Courses": [
+        {
+            "name": "Gabriel",
+            "age": 20,
+            "course": "Information Technology"
+        },
+        {
+            "name": "Judiel",
+            "age": 22,
+            "course": "Computer Science"
+        },
+        {
+            "name": "Jinwoo",
+            "age": 19,
+            "course": "Data Science"
+        }
+    ]
+}
