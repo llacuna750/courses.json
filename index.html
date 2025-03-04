@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course List</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .course-container { max-width: 600px; margin: auto; padding: 20px; }
+        .course { background: #f4f4f4; margin: 10px 0; padding: 10px; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <div class="course-container">
+        <h2>Courses</h2>
+        <div id="courses"></div>
+    </div>
+
+    <script>
+        fetch('https://raw.githubusercontent.com/yourusername/repository/main/courses.json')
+            .then(response => response.json())
+            .then(data => {
+                let coursesContainer = document.getElementById('courses');
+                data.courses.forEach(course => {
+                    let div = document.createElement('div');
+                    div.classList.add('course');
+                    div.innerHTML = `<strong>${course.code}</strong>: ${course.description} - ${course.credit} credits`;
+                    coursesContainer.appendChild(div);
+                });
+            })
+            .catch(error => console.error('Error fetching JSON:', error));
+    </script>
+</body>
+</html>
