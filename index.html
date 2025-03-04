@@ -5,12 +5,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Course List</title>
     <style>
-        body { font-family: Arial, sans-serif; }
+        body { margin: 0; font-family: Arial, sans-serif; }
         .course-container { max-width: 600px; margin: auto; padding: 20px; }
         .course { background: #f4f4f4; margin: 10px 0; padding: 10px; border-radius: 5px; }
+
+        .home {
+            padding: 10px 0;
+            background-color: #f4f4f4;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-top: 0em;
+            
+            p {
+                padding: 0 10px;
+            }
+        }
+        .home a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+        }
+        .course-container { 
+            max-width: 600px; 
+            margin: 20px auto; 
+            padding: 20px; 
+        }
+        .course {
+            background: #f9f9f9; 
+            margin: 10px 0; 
+            padding: 10px; 
+            border-radius: 5px;
+        }
     </style>
 </head>
 <body>
+    <header class="home">
+        <p><a href="https://llacuna750.github.io/">Back to Home</a></p>
+    </header>
+
     <div class="course-container">
         <h2>Courses</h2>
         <div id="courses"></div>
