@@ -4,8 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Course List</title>
-    <link rel="shortcut icon" href="logo-website.svg" type="image/x-icon">
+    <link rel="shortcut icon" href="courselogo.png" type="image/x-icon">
     <style>
+        * {
+            box-sizing: border-box;
+        }
         body { 
             margin: 0; 
             font-family: Arial, sans-serif; 
@@ -33,10 +36,12 @@
         }
         .mycourses {
             margin-bottom: 1px;
+            text-align: center;
+            width: 100%;
         }
         .course-container { 
-            max-width: 850px; 
             width: 100%;
+            max-width: 850px;
             background-color: white;
             padding: 20px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
@@ -59,7 +64,6 @@
         table {
             width: 100%;
             border-collapse: collapse;
-            padding: 
         }
         th, td {
             border: 1px solid #ddd;
@@ -70,11 +74,53 @@
             background-color: #f4f4f4;
             font-weight: bold;
         }
-
         h2 {
             text-align: center;
         }
-        
+
+        /* Responsive Table Styles */
+        @media screen and (max-width: 600px) {
+            .home {
+                position: relative;
+                top: 0;
+                left: 0;
+                text-align: center;
+                margin-bottom: 20px;
+            }
+            
+            table, thead, tbody, th, td, tr {
+                display: block;
+            }
+            
+            thead tr {
+                position: absolute;
+                top: -9999px;
+                left: -9999px;
+            }
+            
+            tr {
+                border: 1px solid #ccc;
+                margin-bottom: 10px;
+            }
+            
+            td {
+                border: none;
+                position: relative;
+                padding-left: 50%;
+                text-align: right;
+            }
+            
+            td:before {
+                content: attr(data-label);
+                position: absolute;
+                left: 6px;
+                width: 45%;
+                padding-right: 10px;
+                white-space: nowrap;
+                text-align: left;
+                font-weight: bold;
+            }
+        }
     </style>
 </head>
 <body>
@@ -82,16 +128,9 @@
         <a href="https://llacuna750.github.io/">Back to Home</a>
     </div>
 
-    <!-- <div class="page-content">
-        <h2>Student List</h2>
-        <ul id="student-list" class="card-body"></ul>
-    </div> -->
-
     <div class="mycourses">
         <h1>My Courses</h1>
     </div>
-
-    
     
     <div class="course-container">
         <div id="search-container">
@@ -134,8 +173,6 @@
             })
             .catch(error => console.error("Error fetching JSON:", error));
 
-
-
         fetch("https://raw.githubusercontent.com/llacuna750/courses.json/refs/heads/main/courses.json")
             .then(response => response.json())
             .then(data => {
@@ -145,11 +182,11 @@
                 data.courses.forEach(course => {
                     let row = document.createElement('tr');
                     row.innerHTML = `
-                        <td>${course.code}</td>
-                        <td>${course.description}</td>
-                        <td>${course.year_level}</td>
-                        <td>${course.sem}</td>
-                        <td>${course.credit}</td>
+                        <td data-label="Code">${course.code}</td>
+                        <td data-label="Description">${course.description}</td>
+                        <td data-label="Year Level">${course.year_level}</td>
+                        <td data-label="Semester">${course.sem}</td>
+                        <td data-label="Credits">${course.credit}</td>
                     `;
                     coursesTable.appendChild(row);
                 });
